@@ -1,6 +1,16 @@
 const apiService = new ApiService()
 let main = document.getElementById('main')
 
+const init = () => {
+    addEventListeners()
+    renderBooks()
+}
+
+function addEventListeners() {
+    document.getElementById('book-form').addEventListener('click', displayCreateForm)
+    document.getElementById('books').addEventListener('click', renderBooks)
+}
+
 function displayCreateForm() {
     let formDiv = document.querySelector("#new-book-form")
     let html = `
@@ -25,3 +35,10 @@ function clearForm() {
     formDiv.innerHTML = ""
 }
 
+
+
+
+
+
+
+init()
