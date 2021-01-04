@@ -45,6 +45,21 @@ function clearForm() {
     formDiv.innerHTML = ""
 }
 
+async function addBook(e) {
+    e.preventDefault()
+    let main = document.getElementById("main")
+    let book = {
+        title: e.target.querySelector("#title").value,
+        author: e.target.querySelector("#author").value,
+        read: e.target.querySelector("#read").checked
+    }
+    let data = await apiService.fetchAddBook(book)
+    let newBook = new Book(data)
+    main.innerHTML += newBook.render()
+    attachClicks()
+    clearForm()
+}
+
 function attachClicks() {
     const books = document.querySelectorAll("li a")
     books.forEach(book => {
