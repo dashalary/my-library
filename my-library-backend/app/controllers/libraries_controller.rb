@@ -3,9 +3,9 @@ class LibrariesController < ApplicationController
 
   # GET /libraries
   def index
-    @libraries = Library.all
+    libraries = Library.all
 
-    render json: @libraries
+    render json: libraries
   end
 
   # GET /libraries/1
