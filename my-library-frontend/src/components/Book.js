@@ -7,6 +7,10 @@ class Book {
     }
 
     render() {
-        
+        return `
+        <li>
+        <a href="#" data-id="${this.id}">${this.title}</a>  |   ${this.read ? "Read" : "Not yet read"}
+        </li>
+        `
     }
 }
