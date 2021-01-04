@@ -20,3 +20,8 @@ function displayCreateForm() {
     document.querySelector('form').addEventListener('submit', addBook)
 }
 
+function clearForm() {
+    let formDiv = document.querySelector("#new-book-form")
+    formDiv.innerHTML = ""
+}
+
