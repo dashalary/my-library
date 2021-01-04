@@ -13,4 +13,13 @@ class Book {
         </li>
         `
     }
+
+    renderBook() {
+        return `
+        <h3>${this.title}</h3>
+        <hr>
+        <br>
+        <p>${this.read ? "Read" : "Not yet read"}</p>
+        `
+    }
 }

@@ -67,7 +67,13 @@ function attachClicks() {
     })
 }
 
-
+async function displayBook(e) {
+    let id = e.target.dataset.id
+    const data = await apiService.fetchBook(id)
+    const book = new Book(data)
+    main.innerHTML = book.renderBook()
+    
+}
 
 
 
