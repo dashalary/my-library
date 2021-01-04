@@ -11,6 +11,16 @@ function addEventListeners() {
     document.getElementById('books').addEventListener('click', renderBooks)
 }
 
+async function renderBooks() {
+    const books = await apiService.fetchBooks() // my JSON data
+    main.innerHTML = ""
+    books.map(book => {
+        const newBook = new Book(book)
+        main.innerHTML += newBook.render() // using an instance method on the prototype of my Book class
+    })
+    attachClicks()
+}
+
 function displayCreateForm() {
     let formDiv = document.querySelector("#new-book-form")
     let html = `
@@ -35,7 +45,12 @@ function clearForm() {
     formDiv.innerHTML = ""
 }
 
-
+function attachClicks() {
+    const books = document.querySelectorAll("li a")
+    books.forEach(book => {
+        book.addEventListener('click', displayBook)
+    })
+}
 
 
 
