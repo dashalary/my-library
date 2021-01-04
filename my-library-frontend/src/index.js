@@ -1,2 +1,5 @@
-const BASE_URL = 'http://localhost:3000'
+const apiService = new ApiService()
+let main = document.getElementById('main')
+
+
 
