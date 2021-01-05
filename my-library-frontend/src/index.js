@@ -14,6 +14,8 @@ function addEventListeners() {
 }
 
 async function renderBooks() {
+    document.getElementById("new-library-form").innerHTML = ""
+    document.getElementById("new-book-form").innerHTML = ""
     const books = await apiService.fetchBooks() // my JSON data
     main.innerHTML = ""
     books.map(book => {
@@ -24,6 +26,8 @@ async function renderBooks() {
 }
 
 async function renderLibraries() {
+    document.getElementById("new-library-form").innerHTML = ""
+    document.getElementById("new-book-form").innerHTML = ""
     const libs = await apiService.fetchLibraries() // my JSON data
     main.innerHTML = ""
     libs.map(lib => {
@@ -35,6 +39,7 @@ async function renderLibraries() {
 
 function displayCreateForm() {
     main.innerHTML = ""
+    document.getElementById("new-library-form").innerHTML = ""
     let formDiv = document.querySelector("#new-book-form")
     let html = `
     <form>
@@ -122,6 +127,7 @@ async function addLibrary(e) {
 
 function displayCreateLibForm() {
     main.innerHTML = ""
+    document.getElementById("new-book-form").innerHTML = ""
     let formDiv = document.querySelector("#new-library-form")
     let html = `
     <form>
