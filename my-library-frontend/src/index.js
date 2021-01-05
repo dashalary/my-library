@@ -7,7 +7,7 @@ const init = () => {
 }
 
 function addEventListeners() {
-    document.getElementById('book-form').addEventListener('click', displayCreateForm)
+    // document.getElementById('add-book-form').addEventListener('click', displayCreateForm)
     document.getElementById('books').addEventListener('click', renderBooks)
     document.getElementById('library-form').addEventListener('click', displayCreateLibForm)
     document.getElementById('libraries').addEventListener('click', renderLibraries)
@@ -149,8 +149,5 @@ function displayCreateLibForm() {
     formDiv.innerHTML = html 
     document.querySelector('form').addEventListener('submit', addLibrary)
 }
-
-
-
 
 init()

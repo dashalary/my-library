@@ -12,6 +12,7 @@ class Book {
         <li>
         <a href="#" data-id="${this.id}">${this.title}</a>      |       ${this.read ? "Read" : "Not yet read"}
         </li>
+        <br>
         `
     }
 
