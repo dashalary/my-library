@@ -37,12 +37,13 @@ async function renderLibraries() {
     attachClicksLib()
 }
 
-function displayCreateForm() {
+function displayCreateForm(id) {
     main.innerHTML = ""
     document.getElementById("new-library-form").innerHTML = ""
     let formDiv = document.querySelector("#new-book-form")
     let html = `
     <form>
+    <input type="hidden" id="library-id" value="${id}">
     <label>Title: </label>
     <input type="text" id="title"><br>
     <br>
@@ -70,6 +71,7 @@ async function addBook(e) {
     e.preventDefault()
     let main = document.getElementById("main")
     let book = {
+        library_id: e.target.querySelector("#library-id").value,
         title: e.target.querySelector("#title").value,
         author: e.target.querySelector("#author").value,
         read: e.target.querySelector("#read").checked
@@ -101,7 +103,6 @@ async function displayBook(e) {
     const data = await apiService.fetchBook(id)
     const book = new Book(data)
     main.innerHTML = book.renderBook()
-    
 }
 
 async function displayLibrary(e) {
@@ -117,6 +118,7 @@ async function displayLibrary(e) {
             `
         })
     }
+    document.getElementById('add-book-form').addEventListener('click', () => displayCreateForm(id))
 }
 
 async function addLibrary(e) {

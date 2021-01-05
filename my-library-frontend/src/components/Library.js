@@ -16,6 +16,8 @@ class Library {
     renderLibrary() {
         return `
         <h3>${this.name}</h3>
+        <br>
+        <button type="button" id="add-book-form">Add Book</button>
         <hr>
         <br>
         `
