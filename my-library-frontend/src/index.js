@@ -3,7 +3,7 @@ let main = document.getElementById('main')
 
 const init = () => {
     addEventListeners()
-    renderLibraries() // or libraries?
+    renderLibraries()
 }
 
 function addEventListeners() {
@@ -109,7 +109,14 @@ async function displayLibrary(e) {
     const data = await apiService.fetchLibrary(id)
     const lib = new Library(data)
     main.innerHTML = lib.renderLibrary()
-    // attachClicks()
+    if (lib.books) {
+        lib.books.forEach(book => {
+            main.innerHTML += `
+            <li><a href="#" data-id="${this.id}">${book.title}</a></li>
+            <br>
+            `
+        })
+    }
 }
 
 async function addLibrary(e) {
