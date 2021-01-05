@@ -26,13 +26,14 @@ function displayCreateForm() {
     let html = `
     <form>
     <label>Title: </label>
-    <input type="text" id="title">
+    <input type="text" id="title"><br>
+    <br>
     <label>Author: </label>
-    <input type="text" id="author">
-    <label>Author: </label>
-    <input type="text" id="author">
+    <input type="text" id="author"><br>
+    <br>
     <label>Have you already read it? </label>
-    <input type="checkbox" id="read">
+    <input type="checkbox" id="read"><br>
+    <br>
     <input type="submit">
     </form>
     `
