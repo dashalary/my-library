@@ -3,7 +3,7 @@ let main = document.getElementById('main')
 
 const init = () => {
     addEventListeners()
-    renderBooks() // or libraries?
+    renderLibraries() // or libraries?
 }
 
 function addEventListeners() {
@@ -73,6 +73,7 @@ async function addBook(e) {
     main.innerHTML += newBook.render()
     attachClicks()
     clearForm()
+    e.target.style.display = "none"
 }
 
 function attachClicks() {
@@ -102,7 +103,7 @@ async function displayLibrary(e) {
     const data = await apiService.fetchLibrary(id)
     const lib = new Library(data)
     main.innerHTML = lib.renderLibrary()
-    
+    // attachClicks()
 }
 
 async function addLibrary(e) {
