@@ -4,6 +4,7 @@ class Book {
         this.title = data.title 
         this.author = data.author 
         this.read = data.read
+        this.library = data.library
     }
 
     render() {
@@ -20,7 +21,8 @@ class Book {
         <p>by ${this.author}</p>
         <hr>
         <br>
-        <p>${this.read ? "Read" : "Not yet read"}</p>
+        <p>Belongs to ${this.library.name}.</p>
+        <p>${this.read ? "Read" : "Not yet read"}.</p>
         `
     }
 }
