@@ -28,4 +28,30 @@ class ApiService {
         let data = await res.json()
         return data
     }
+
+    async fetchLibraries() {
+        let res = await fetch(this.baseURL + '/libraries')
+        let data = await res.json()
+        return data
+    }
+
+    async fetchLibrary(id) {
+        let res = await fetch(this.baseURL + `/libraries/${id}`)
+        let data = await res.json()
+        return data
+    }
+
+    async fetchAddLibrary(libraryData) {
+        let configObj = {
+            method: 'POST',
+            body: JSON.stringify(libraryData),
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        let res = await fetch(this.baseURL + '/libraries', configObj)
+        let data = await res.json()
+        return data
+    }
 }

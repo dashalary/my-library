@@ -3,12 +3,14 @@ let main = document.getElementById('main')
 
 const init = () => {
     addEventListeners()
-    renderBooks()
+    renderBooks() // or libraries?
 }
 
 function addEventListeners() {
     document.getElementById('book-form').addEventListener('click', displayCreateForm)
     document.getElementById('books').addEventListener('click', renderBooks)
+    document.getElementById('library-form').addEventListener('click', displayCreateLibForm)
+    document.getElementById('libraries').addEventListener('click', renderLibraries)
 }
 
 async function renderBooks() {
@@ -19,6 +21,16 @@ async function renderBooks() {
         main.innerHTML += newBook.render() // using an instance method on the prototype of my Book class
     })
     attachClicks()
+}
+
+async function renderLibraries() {
+    const libs = await apiService.fetchLibraries() // my JSON data
+    main.innerHTML = ""
+    libs.map(lib => {
+        const newLibrary = new Library(lib)
+        main.innerHTML += newLibrary.renderLibraries() // using an instance method on the prototype of my Book class
+    })
+    attachClicksLib()
 }
 
 function displayCreateForm() {
@@ -43,7 +55,9 @@ function displayCreateForm() {
 
 function clearForm() {
     let formDiv = document.querySelector("#new-book-form")
+    let formDivLib = document.querySelector("#new-library-form")
     formDiv.innerHTML = ""
+    formDivLib.innerHTML = ""
 }
 
 async function addBook(e) {
@@ -68,6 +82,13 @@ function attachClicks() {
     })
 }
 
+function attachClicksLib() {
+    const libraries = document.querySelectorAll("li a")
+    libraries.forEach(lib => {
+        lib.addEventListener('click', displayLibrary)
+    })
+}
+
 async function displayBook(e) {
     let id = e.target.dataset.id
     const data = await apiService.fetchBook(id)
@@ -75,6 +96,42 @@ async function displayBook(e) {
     main.innerHTML = book.renderBook()
     
 }
+
+async function displayLibrary(e) {
+    let id = e.target.dataset.id
+    const data = await apiService.fetchLibrary(id)
+    const lib = new Library(data)
+    main.innerHTML = lib.renderLibrary()
+    
+}
+
+async function addLibrary(e) {
+    e.preventDefault()
+    let main = document.getElementById("main")
+    let library = {
+        name: e.target.querySelector("#name").value
+    }
+    let data = await apiService.fetchAddLibrary(library)
+    let newLibrary = new Library(data)
+    main.innerHTML += newLibrary.renderLibraries()
+    attachClicksLib()
+    clearForm()
+}
+
+function displayCreateLibForm() {
+    let formDiv = document.querySelector("#new-library-form")
+    let html = `
+    <form>
+    <label>Name: </label>
+    <input type="text" id="name"><br>
+    <br>
+    <input type="submit">
+    </form>
+    `
+    formDiv.innerHTML = html 
+    document.querySelector('form').addEventListener('submit', addLibrary)
+}
+
 
 
 
