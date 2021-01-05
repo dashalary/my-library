@@ -34,6 +34,7 @@ async function renderLibraries() {
 }
 
 function displayCreateForm() {
+    main.innerHTML = ""
     let formDiv = document.querySelector("#new-book-form")
     let html = `
     <form>
@@ -120,6 +121,7 @@ async function addLibrary(e) {
 }
 
 function displayCreateLibForm() {
+    main.innerHTML = ""
     let formDiv = document.querySelector("#new-library-form")
     let html = `
     <form>
