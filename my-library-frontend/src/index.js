@@ -114,13 +114,13 @@ async function displayLibrary(e) {
     if (lib.books) {
         lib.books.forEach(book => {
             main.innerHTML += `
-            <li><a href="#" data-id="${this.id}">${book.title}</a></li>
+            <li><a href="#" data-id="${book.id}">${book.title}</a></li>
             <br>
             `
         })
     }
     document.getElementById('add-book-form').addEventListener('click', () => displayCreateForm(id))
-    // attachClicks()
+    attachClicks()
 }
 
 async function addLibrary(e) {
