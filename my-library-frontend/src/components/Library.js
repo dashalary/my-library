@@ -22,6 +22,5 @@ class Library {
         <hr>
         <br>
         `
-        // button to add book to library needs this.id
     }
 }
