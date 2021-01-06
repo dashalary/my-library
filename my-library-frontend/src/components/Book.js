@@ -24,6 +24,8 @@ class Book {
         <br>
         <p>Belongs to ${this.library.name}.</p>
         <p>${this.read ? "Read" : "Not yet read"}.</p>
+        <br>
+        <button id="delete-book" data-id="${this.id}">Delete This Book</button>
         `
     }
 }

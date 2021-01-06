@@ -103,6 +103,7 @@ async function displayBook(e) {
     const data = await apiService.fetchBook(id)
     const book = new Book(data)
     main.innerHTML = book.renderBook()
+    document.getElementById('delete-book').addEventListener('click', removeBook)
 }
 
 async function displayLibrary(e) {
@@ -119,6 +120,7 @@ async function displayLibrary(e) {
         })
     }
     document.getElementById('add-book-form').addEventListener('click', () => displayCreateForm(id))
+    // attachClicks()
 }
 
 async function addLibrary(e) {
@@ -148,6 +150,14 @@ function displayCreateLibForm() {
     `
     formDiv.innerHTML = html 
     document.querySelector('form').addEventListener('submit', addLibrary)
+}
+
+async function removeBook(e) {
+    let id = e.target.dataset.id
+    const data = await apiService.fetchRemoveBook(id)
+    .then(data => {
+        renderBooks()
+    })
 }
 
 init()
