@@ -24,20 +24,6 @@ class LibrariesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /libraries/1
-  def update
-    if @library.update(library_params)
-      render json: @library
-    else
-      render json: @library.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /libraries/1
-  def destroy
-    @library.destroy
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_library
