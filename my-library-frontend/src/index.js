@@ -11,6 +11,7 @@ function addEventListeners() {
     document.getElementById('books').addEventListener('click', renderBooks)
     document.getElementById('library-form').addEventListener('click', displayCreateLibForm)
     document.getElementById('libraries').addEventListener('click', renderLibraries)
+    document.getElementById('read').addEventListener('click', renderRead)
 }
 
 async function renderBooks() {
@@ -19,6 +20,18 @@ async function renderBooks() {
     const books = await apiService.fetchBooks() // my JSON data
     main.innerHTML = ""
     books.map(book => {
+        const newBook = new Book(book)
+        main.innerHTML += newBook.render() // using an instance method on the prototype of my Book class
+    })
+    attachClicks()
+}
+
+async function renderRead() {
+    document.getElementById("new-library-form").innerHTML = ""
+    document.getElementById("new-book-form").innerHTML = ""
+    const books = await apiService.fetchBooks() // my JSON data
+    main.innerHTML = ""
+    books.filter(book => book.read === true).forEach(book => {
         const newBook = new Book(book)
         main.innerHTML += newBook.render() // using an instance method on the prototype of my Book class
     })
